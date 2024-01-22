@@ -24,8 +24,11 @@ public static class ServiceCollectionBusinessExtension
             .AddSingleton<ModelBusinessRules>();
 
 
+        services
 
-
+            .AddSingleton<ICarService, CarManager>()
+            .AddSingleton<ICarDal, InMemoryCarDal>()
+            .AddSingleton<CarBusinessRules>();
 
 
 

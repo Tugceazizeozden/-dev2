@@ -20,7 +20,7 @@ namespace Business.Responses
 
         public DateTime CreatedAt { get; set; }
 
-        public AddModelResponse( int ıd , DateTime createdat, string name=null,  int brandId=0, int fuelId=0, int  transmissionId=0,decimal  dailyPrice=0 )
+        public AddModelResponse( int ıd ,  string name,  int brandId, int fuelId, int  transmissionId,decimal  dailyPrice, DateTime createdAt)
         {
             Id = ıd;
             Name = name;
@@ -28,7 +28,7 @@ namespace Business.Responses
             FuelId = fuelId;    
             TransmissionId = transmissionId;    
             DailyPrice = dailyPrice;    
-            CreatedAt = createdat;  
+            CreatedAt = createdAt;  
 
         }
         public AddModelResponse()
