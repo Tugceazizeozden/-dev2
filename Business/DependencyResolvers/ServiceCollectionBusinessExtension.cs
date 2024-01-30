@@ -3,6 +3,8 @@ using Business.BusinessRules;
 using Business.Concrete;
 using DataAccess.Abstract;
 using DataAccess.Concrete.InMemory;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
@@ -10,7 +12,7 @@ namespace Business.DependencyResolvers;
 
 public static class ServiceCollectionBusinessExtension
 {
-    public static IServiceCollection AddBusinessServices(this IServiceCollection services)
+    public static IServiceCollection AddBusinessServices(this IServiceCollection services , IConfiguration  configuration)
     {
         services
             .AddSingleton<IBrandService, BrandManager>()
@@ -30,9 +32,28 @@ public static class ServiceCollectionBusinessExtension
             .AddSingleton<ICarDal, InMemoryCarDal>()
             .AddSingleton<CarBusinessRules>();
 
+        services
+            .AddSingleton<IFuelService, FuelManager>()
+            .AddSingleton<IFuelDal, InMemoryFuelDal>()
+            .AddSingleton<FuelBusinessRules>();
+
+        services
+        .AddSingleton<ITransmissionService, TransmissionManager>()
+        .AddSingleton<ITransmissionDal, InMemoryTransmissionDal>()
+        .AddSingleton<TransmissionBusinessRules>();
+
+        services
+
+        .AddScope<IIndiviualCustomerService, IndivaCusstomerManager>()
 
 
-        services.AddAutoMapper(Assembly.GetExecutingAssembly()); 
+
+
+
+        services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+        services.AddDbContext<RentACarContext>(
+            options => options.UseSqlServer(configuration.GetConnectionString("RentACarMSSQL22"))); 
 
 
 

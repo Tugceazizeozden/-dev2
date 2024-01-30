@@ -1,23 +1,41 @@
 ﻿using Core.CrossCuttingConcerns.Exceptions;
 using DataAccess.Abstract;
+using Entities.Concrete;
 
 namespace Business.BusinessRules;
 
 public class ModelBusinessRules
 {
-    private readonly IModelDal _ModelDal;
+    private readonly IModelDal _modelDal;
 
-    public ModelBusinessRules(IModelDal ModelDal)
+    public ModelBusinessRules(IModelDal modelDal)
     {
-        _ModelDal = ModelDal;
+        _modelDal = modelDal;
     }
 
-    public void CheckIfModelNameNotExists(string ModelName)
+    public void CheckIfModelNameNotExists(string Name)
     {
-        bool isExists = _ModelDal.GetList().Any(b => b.Name == ModelName);
-        if (isExists)
+        bool isNameExists = _modelDal.Get(m => m.Name == name) != null;
+        if (isNameExists)
         {
-            throw new BusinessException("Model already exists.");
+            throw new BusinessException("Model name already exists.");
         }
     }
+    public void CheckIfModelExists(Model? model)
+    {
+        if (model is null)
+            throw new NotFoundException("Model not found.")
+
+    }
+    public void CheckIfModelYearShouldBeInLast20Years(short year)
+    {
+        if (year < DateTime.UtcNow.AddYears(-20).Year)
+
+            throw new BusinessException("Model year should be in last 20 years.");
+
+    }
+
+
+
+
 }

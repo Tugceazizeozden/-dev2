@@ -2,32 +2,29 @@
 using Entities.Concrete;
 
 namespace DataAccess.Concrete.EntityFramework;
-internal class EfBrandDal : IBrandDal
+public class EfUsersDal : IUsersDal
 {
-    public void Add(Brand entity)
+    public void Add(Users entity)
     {
         throw new NotImplementedException();
     }
 
-    public void Delete(Brand entity)
+    public void Delete(Users entity)
     {
         throw new NotImplementedException();
     }
 
-    
-    
-
-    public Brand? GetById(int id)
+    public Users? GetById(int id)
     {
         throw new NotImplementedException();
     }
 
-    public IList<Brand> GetList()
+    public IList<Users> GetList()
     {
         throw new NotImplementedException();
     }
 
-    public void Update(Brand entity)
+    public void Update(Users entity)
     {
         throw new NotImplementedException();
     }

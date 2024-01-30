@@ -12,13 +12,9 @@ public class CarBusinessRules
         _CarDal = CarDal;
     }
 
-   // public void CheckIfCarNameNotExists(string CarName)
     
-    //{
-       // bool isExists = _CarDal.GetList().Any(b => b.Name == CarName);
-       // if (isExists)
-       // {
-            //throw new BusinessException("Car already exists.");//
+    
+       
         }
    
-//}
+

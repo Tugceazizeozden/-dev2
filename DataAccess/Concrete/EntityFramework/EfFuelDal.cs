@@ -2,14 +2,14 @@
 using Entities.Concrete;
 
 namespace DataAccess.Concrete.EntityFramework;
-internal class EfBrandDal : IBrandDal
+internal class EfFuelDal : IFuelDal
 {
-    public void Add(Brand entity)
+    public void Add(Fuel entity)
     {
         throw new NotImplementedException();
     }
 
-    public void Delete(Brand entity)
+    public void Delete(Fuel entity)
     {
         throw new NotImplementedException();
     }
@@ -17,17 +17,17 @@ internal class EfBrandDal : IBrandDal
     
     
 
-    public Brand? GetById(int id)
+    public Fuel? GetById(int id)
     {
         throw new NotImplementedException();
     }
 
-    public IList<Brand> GetList()
+    public IList<Fuel> GetList()
     {
         throw new NotImplementedException();
     }
 
-    public void Update(Brand entity)
+    public void Update(Fuel entity)
     {
         throw new NotImplementedException();
     }
